@@ -1,6 +1,7 @@
 function example(handles)
 % load train database
-try   
+try
+    
 load('prsn.mat','T','TrainDatabasePath');
 
 %load The test image
@@ -23,6 +24,7 @@ imshow(SelectedImage, 'Parent', handles.axes2);
 str = strcat('Matched image is :  ',OutputName);
 disp(str)
 end
+
 catch ME
-    disp(getReport(ME));
-end
+    
+    

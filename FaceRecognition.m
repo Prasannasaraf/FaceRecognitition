@@ -1,9 +1,9 @@
-function varargout = demo(varargin)
+function varargout = FaceRecognition(varargin)
 gui_Singleton = 1;
 gui_State = struct('gui_Name',       mfilename, ...
                    'gui_Singleton',  gui_Singleton, ...
-                   'gui_OpeningFcn', @demo_OpeningFcn, ...
-                   'gui_OutputFcn',  @demo_OutputFcn, ...
+                   'gui_OpeningFcn', @FaceRecognition_OpeningFcn, ...
+                   'gui_OutputFcn',  @FaceRecognition_OutputFcn, ...
                    'gui_LayoutFcn',  [] , ...
                    'gui_Callback',   []);
 if nargin && ischar(varargin{1})
@@ -18,20 +18,19 @@ end
 % End initialization code - DO NOT EDIT
 
 
-% --- Executes just before demo is made visible.
-function demo_OpeningFcn(hObject, eventdata, handles, varargin)
-% Choose default command line output for demo
+% --- Executes just before FaceRecognition is made visible.
+function FaceRecognition_OpeningFcn(hObject, eventdata, handles, varargin)
+% Choose default command line output for FaceRecognition
 handles.output = hObject;
 
 % Update handles structure
 guidata(hObject, handles);
 
-% UIWAIT makes demo wait for user response (see UIRESUME)
+% UIWAIT makes FaceRecognition wait for user response (see UIRESUME)
 % uiwait(handles.figure1);
 
-
 % --- Outputs from this function are returned to the command line.
-function varargout = demo_OutputFcn(hObject, eventdata, handles) 
+function varargout = FaceRecognition_OutputFcn(hObject, eventdata, handles) 
 % varargout  cell array for returning output args (see VARARGOUT);
 % hObject    handle to figure
 % eventdata  reserved - to be defined in a future version of MATLAB
@@ -55,30 +54,35 @@ function b_CreateFcn(hObject, eventdata, handles)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    empty - handles not created until after all CreateFcns called
 
-
-% --- Executes on button press in pushbutton2.
-function pushbutton2_Callback(hObject, eventdata, handles)
-% hObject    handle to pushbutton2 (see GCBO)
+% --- Executes on button press in TrainDatabase.
+function TrainDatabase_Callback(hObject, eventdata, handles)
+% hObject    handle to TrainDatabase (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
+TrainDataBase();
+
+
+% --- Executes on button press in TestDatabase.
+function TestDatabase_Callback(hObject, eventdata, handles)
+% hObject    handle to TestDatabase (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+example(handles);
 
 
 % --- Executes during object creation, after setting all properties.
-function pushbutton2_CreateFcn(hObject, eventdata, handles)
-% hObject    handle to pushbutton2 (see GCBO)
+function axes1_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to axes1 (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    empty - handles not created until after all CreateFcns called
 
-
-% --- Executes on button press in pushbutton3.
-function pushbutton3_Callback(hObject, eventdata, handles)
-% hObject    handle to pushbutton3 (see GCBO)
-% eventdata  reserved - to be defined in a future version of MATLAB
-% handles    structure with handles and user data (see GUIDATA)
+% Hint: place code in OpeningFcn to populate axes1
 
 
 % --- Executes during object creation, after setting all properties.
-function pushbutton3_CreateFcn(hObject, eventdata, handles)
-% hObject    handle to pushbutton3 (see GCBO)
+function axes2_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to axes2 (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    empty - handles not created until after all CreateFcns called
+
+% Hint: place code in OpeningFcn to populate axes2
