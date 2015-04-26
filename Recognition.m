@@ -38,4 +38,3 @@ end
 [Euc_dist_min , Recognized_index] = min(Euc_dist);
 
 OutputName = strcat(int2str(Recognized_index),'.jpg');
- 
