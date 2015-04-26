@@ -9,9 +9,9 @@ img = im2double(img); %#
 R = 127; 
 C = 127;
 Kmax = pi/2;
-f = sqrt( 2 );
-Delt = 2 * pi;
-Delt2 = Delt * Delt;
+frequency = sqrt( 2 );
+Delta = 2 * pi;
+DeltaSquare = Delta * Delta;
 
 %# The minimum amount of padding is just "one side" of the filter.
 %# Add 1 if the image size is odd.
@@ -27,7 +27,7 @@ GW = {};                           %# First, construct the filter bank.
 for v = 0 : 4
     for u = 1 : 8
         %# create a gabor wavelet
-        GW =  [GW {GaborWavelet(R, C, Kmax, f, u, v, Delt2)}];
+        GW =  [GW {GaborWavelet(R, C, Kmax, frequency, u, v, DeltaSquare)}];
     end
 end
 

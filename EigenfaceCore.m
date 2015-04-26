@@ -13,7 +13,7 @@ for i = 1 : Train_Number
 end
 
 %%%%%%%%%%%%%%%%%%%%%%%% Snapshot method of Eigenface methos
-
+% Covariance
 L = A'*A; 
 [V D] = eig(L); 
 

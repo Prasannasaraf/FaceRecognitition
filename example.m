@@ -1,30 +1,25 @@
-
 clear all
 clc
 close all
 
-% You can customize and fix initial directory paths
-TrainDatabasePath = uigetdir('F:\FYP\FR\FR\train1', 'Select training database path' );
-TestDatabasePath = uigetdir('F:\FYP\FR\FR\test1', 'Select test database path');
+% load train datanase
+load('prsn.mat','T','TrainDatabasePath');
 
-prompt = {'Enter test image name (a number between 1 to 10):'};
-dlg_title = 'Input of Color Local Texture Feature Based Face Recognition System';
-num_lines= 1;
-def = {'1'};
+%load The test image
+[InputImage , fileCanceled]= imgetfile;
+if fileCanceled 
+    exit; 
+end
 
-testImagePath = inputdlg(prompt,dlg_title,num_lines,def);
-testImagePath = strcat(TestDatabasePath,'\Test',char(testImagePath),'.jpg');
-
-im = imread(testImagePath);
-T = CreateDatabase(TrainDatabasePath);
+% load the trained database
 [m, A, Eigenfaces] = EigenfaceCore(T);
 
-OutputName = Recognition(testImagePath, m, A, Eigenfaces);
+OutputName = Recognition(InputImage, m, A, Eigenfaces);
 
 SelectedImagePath = strcat(TrainDatabasePath,'\Train',OutputName);
-SelectedImage = imread(SelectedImage);
+SelectedImage = imread(SelectedImagePath);
 
-imshow(im)
+imshow(InputImage);
 title('Test Image');
 figure(23),imshow(SelectedImage);
 title('Equivalent Image');

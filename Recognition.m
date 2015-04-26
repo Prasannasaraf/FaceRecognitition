@@ -1,4 +1,4 @@
-function OutputName = Recognition(TestImage, m, A, Eigenfaces)
+function OutputName = Recognition(InputImage, m, A, Eigenfaces)
 
 ProjectedImages = [];
 Train_Number = size(Eigenfaces,2);
@@ -8,10 +8,9 @@ for i = 1 : Train_Number
 end
 
 %%%%%%%%%%%%%%%%%%%%%%%% Extracting the PCA features from test image
-InputImage = imread(TestImage);
 %InputImage = rgb2gray(InputImage);
-temp = InputImage;
-img = imresize(temp,[64 64])
+temp = imread(InputImage);
+img = imresize(temp,[64 64]);
 %[irow icol] = size(temp);
 A = img;
 k1=Glet(A);
