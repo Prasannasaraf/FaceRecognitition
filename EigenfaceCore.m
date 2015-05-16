@@ -6,6 +6,7 @@ m = mean(T,2);
 Train_Number = size(T,2);
 
 %%%%%%%%%%%%%%%%%%%%%%%% Calculating the deviation of each image from mean image
+%Diff Array
 A = [];  
 for i = 1 : Train_Number
     temp = double(T(:,i)) - m; 

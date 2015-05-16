@@ -5,7 +5,7 @@ try
     %load The test image
     InputImage = handles.inputimage ;
 
-        % load the trained database
+    % load the trained database
     [m, A, Eigenfaces] = EigenfaceCore(T);
 
     OutputName = Recognition(InputImage, m, A, Eigenfaces);

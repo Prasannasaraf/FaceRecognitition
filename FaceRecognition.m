@@ -69,6 +69,7 @@ function LoadImage_Callback(hObject, eventdata, handles)
 % hObject    handle to LoadImage (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA) 
+clear_Callback(hObject, eventdata, handles);
 [InputImage , fileCanceled]= imgetfile;
     if fileCanceled 
         disp('No file selected');
@@ -164,8 +165,14 @@ cla(handles.axes2);
 
 
 function checkiftrained(handles)
-if(handles.flag==1)
-    set(handles.text7,'String','Trained');
-else
-    set(handles.text7,'String','Not Trained');
+try
+    if(handles.flag==1)
+        set(handles.text7,'String','Trained');
+    else
+        set(handles.text7,'String','Not Trained');
+    end
+catch ME
+    disp(getReport(ME));
 end
+    
+        

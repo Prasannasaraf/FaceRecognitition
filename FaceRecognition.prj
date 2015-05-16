@@ -1,0 +1,94 @@
+<deployment-project plugin="plugin.apptool" plugin-version="1.0">
+  <configuration build-checksum="830132158" file="C:\Users\prasa_000\Documents\GitHub\FaceRecognitition\FaceRecognition.prj" location="C:\Users\prasa_000\Documents\GitHub\FaceRecognitition" name="FaceRecognition" target="target.mlapps" target-name="Package App">
+    <param.appname>FaceRecognition</param.appname>
+    <param.authnamewatermark />
+    <param.email />
+    <param.company />
+    <param.icon />
+    <param.icons />
+    <param.summary />
+    <param.description />
+    <param.screenshot />
+    <param.version>1.0</param.version>
+    <param.products.name>
+      <item>MATLAB</item>
+      <item>Image Processing Toolbox</item>
+    </param.products.name>
+    <param.products.id>
+      <item>'1'</item>
+      <item>'17'</item>
+    </param.products.id>
+    <param.products.version>
+      <item>8.4</item>
+      <item>9.1</item>
+    </param.products.version>
+    <param.platforms />
+    <param.output>${PROJECT_ROOT}\FaceRecognition.mlappinstall</param.output>
+    <param.guid>df817ede-6a47-4901-b5c2-8f2c11635435</param.guid>
+    <unset>
+      <param.authnamewatermark />
+      <param.email />
+      <param.company />
+      <param.icon />
+      <param.icons />
+      <param.summary />
+      <param.description />
+      <param.screenshot />
+      <param.version />
+      <param.platforms />
+    </unset>
+    <fileset.main>
+      <file>${PROJECT_ROOT}\FaceRecognition.m</file>
+    </fileset.main>
+    <fileset.depfun>
+      <file>${PROJECT_ROOT}\CreateDatabase.m</file>
+      <file>${PROJECT_ROOT}\EigenfaceCore.m</file>
+      <file>${PROJECT_ROOT}\example.m</file>
+      <file>${PROJECT_ROOT}\FaceRecognition.fig</file>
+      <file>${PROJECT_ROOT}\GaborWavelet.m</file>
+      <file>${PROJECT_ROOT}\Glet.m</file>
+      <file>${PROJECT_ROOT}\histogram.m</file>
+      <file>${PROJECT_ROOT}\LBP.m</file>
+      <file>${PROJECT_ROOT}\Recognition.m</file>
+      <file>${PROJECT_ROOT}\TrainDataBase.m</file>
+    </fileset.depfun>
+    <fileset.resources />
+    <fileset.package />
+    <build-deliverables>
+      <file location="C:\Users\prasa_000\Documents\GitHub\FaceRecognitition" name="FaceRecognition.mlappinstall" optional="false">C:\Users\prasa_000\Documents\GitHub\FaceRecognitition\FaceRecognition.mlappinstall</file>
+    </build-deliverables>
+    <workflow />
+    <matlab>
+      <root>C:\Program Files\MATLAB\R2014b</root>
+      <toolboxes>
+        <toolbox name="fixedpoint" />
+        <toolbox name="matlabcoder" />
+      </toolboxes>
+      <toolbox>
+        <fixedpoint>
+          <enabled>true</enabled>
+        </fixedpoint>
+      </toolbox>
+      <toolbox>
+        <matlabcoder>
+          <enabled>true</enabled>
+        </matlabcoder>
+      </toolbox>
+    </matlab>
+    <platform>
+      <unix>false</unix>
+      <mac>false</mac>
+      <windows>true</windows>
+      <win2k>false</win2k>
+      <winxp>false</winxp>
+      <vista>false</vista>
+      <linux>false</linux>
+      <solaris>false</solaris>
+      <osver>6.2</osver>
+      <os32>false</os32>
+      <os64>true</os64>
+      <arch>win64</arch>
+      <matlab>true</matlab>
+    </platform>
+  </configuration>
+</deployment-project>
