@@ -3,16 +3,13 @@ function T = CreateDatabase(TrainDatabasePath)
 % Description: This function reshapes all 2D images of the training database
 % into 1D column vectors. Then, it puts these 1D column vectors in a row to 
 % construct 2D matrix 'T'.
-
 TrainFiles = dir(TrainDatabasePath);
 Train_Number = 0;
-
 for i = 1:size(TrainFiles,1)
     if not(strcmp(TrainFiles(i).name,'.')|strcmp(TrainFiles(i).name,'..')|strcmp(TrainFiles(i).name,'Thumbs.db'))
         Train_Number = Train_Number + 1; % Number of all images in the training database
     end
 end
-
 %%%%%%%%%%%%%%%%%%%%%%%% Construction of 2D matrix from 1D image vectors
 T = [];
 for i = 1 : Train_Number

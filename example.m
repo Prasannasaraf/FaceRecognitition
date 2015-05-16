@@ -1,28 +1,22 @@
 function example(handles)
 % load train database
-try   
-load('prsn.mat','T','TrainDatabasePath');
+try
+    load('prsn.mat','T','TrainDatabasePath');
+    %load The test image
+    InputImage = handles.inputimage ;
 
-%load The test image
-[InputImage , fileCanceled]= imgetfile;
-if fileCanceled 
-    disp('No file selected');
-else
-    
-% load the trained database
-[m, A, Eigenfaces] = EigenfaceCore(T);
+        % load the trained database
+    [m, A, Eigenfaces] = EigenfaceCore(T);
 
-OutputName = Recognition(InputImage, m, A, Eigenfaces);
+    OutputName = Recognition(InputImage, m, A, Eigenfaces);
 
-SelectedImagePath = strcat(TrainDatabasePath,'\Train',OutputName);
-SelectedImage = imread(SelectedImagePath);
+    SelectedImagePath = strcat(TrainDatabasePath,'\Train',OutputName);
+    SelectedImage = imread(SelectedImagePath);
 
-imshow(InputImage, 'Parent', handles.axes1);
-imshow(SelectedImage, 'Parent', handles.axes2);
-
-str = strcat('Matched image is :  ',OutputName);
-disp(str)
-end
+    imshow(SelectedImage, 'Parent', handles.axes2);
+    histogram(SelectedImage,handles.axes8,handles.axes9);
+    str = strcat('Matched image is :  ',OutputName);
+    disp(str)
 catch ME
     disp(getReport(ME));
 end

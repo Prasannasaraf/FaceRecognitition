@@ -4,7 +4,10 @@ img = rgb2gray(A);
 %# Convert to double precision 
 img = im2double(img); %# 
 [m,n] = size(img);  %# Store the original size.
-
+%R Height
+%C Width
+%u No of scales
+%V No of orientation
 %# It is best if the filter size is odd, so it has a discrete center.
 R = 127; 
 C = 127;
@@ -23,7 +26,8 @@ if rem(m,2) ~= 0; pR = pR + 1; end;
 if rem(n,2) ~= 0; pC = pC + 1; end;
 img = padarray(img,[pR pC],'pre'); %# Pad image to handle circular convolution.
 
-GW = {};                           %# First, construct the filter bank.
+GW = {}; 
+%# First, construct the filter bank.
 for v = 0 : 4
     for u = 1 : 8
         %# create a gabor wavelet

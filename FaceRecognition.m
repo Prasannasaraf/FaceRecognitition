@@ -24,6 +24,7 @@ function FaceRecognition_OpeningFcn(hObject, eventdata, handles, varargin)
 handles.output = hObject;
 
 % Update handles structure
+cla(handles.axes2);
 guidata(hObject, handles);
 
 % UIWAIT makes FaceRecognition wait for user response (see UIRESUME)
@@ -59,15 +60,25 @@ function TrainDatabase_Callback(hObject, eventdata, handles)
 % hObject    handle to TrainDatabase (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
-TrainDataBase();
+TrainDataBase(hObject,handles);
+checkiftrained(handles);
 
 
-% --- Executes on button press in TestDatabase.
-function TestDatabase_Callback(hObject, eventdata, handles)
-% hObject    handle to TestDatabase (see GCBO)
+% --- Executes on button press in LoadImage.
+function LoadImage_Callback(hObject, eventdata, handles)
+% hObject    handle to LoadImage (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
-% handles    structure with handles and user data (see GUIDATA)
-example(handles);
+% handles    structure with handles and user data (see GUIDATA) 
+[InputImage , fileCanceled]= imgetfile;
+    if fileCanceled 
+        disp('No file selected');
+    else
+        handles.inputimage = InputImage;
+        guidata(hObject,handles);
+        imshow(InputImage, 'Parent', handles.axes1);
+        histogram(imread(InputImage),handles.axes3,handles.axes5);
+    end
+    
 
 
 % --- Executes during object creation, after setting all properties.
@@ -86,3 +97,75 @@ function axes2_CreateFcn(hObject, eventdata, handles)
 % handles    empty - handles not created until after all CreateFcns called
 
 % Hint: place code in OpeningFcn to populate axes2
+
+
+% --- Executes on button press in Histogram.
+function Histogram_Callback(hObject, eventdata, handles)
+% hObject    handle to Histogram (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+
+% --- Executes on button press in Recognise.
+function Recognise_Callback(hObject, eventdata, handles)
+% hObject    handle to Recognise (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+example(handles);
+
+
+% --- Executes during object creation, after setting all properties.
+function axes3_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to axes3 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns called
+
+% Hint: place code in OpeningFcn to populate axes3
+
+
+% --- Executes during object creation, after setting all properties.
+function axes8_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to axes8 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns called
+
+% Hint: place code in OpeningFcn to populate axes8
+
+
+% --- Executes during object creation, after setting all properties.
+function axes5_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to axes5 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns called
+
+% Hint: place code in OpeningFcn to populate axes5
+
+
+% --- Executes during object creation, after setting all properties.
+function axes9_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to axes9 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns called
+
+% Hint: place code in OpeningFcn to populate axes9
+
+
+% --- Executes on button press in clear.
+function clear_Callback(hObject, eventdata, handles)
+% hObject    handle to clear (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+cla(handles.axes3);
+cla(handles.axes5);
+cla(handles.axes8);
+cla(handles.axes9);
+cla(handles.axes1);
+cla(handles.axes2);
+
+
+function checkiftrained(handles)
+if(handles.flag==1)
+    set(handles.text7,'String','Trained');
+else
+    set(handles.text7,'String','Not Trained');
+end
