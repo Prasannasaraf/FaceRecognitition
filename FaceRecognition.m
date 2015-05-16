@@ -22,9 +22,10 @@ end
 function FaceRecognition_OpeningFcn(hObject, eventdata, handles, varargin)
 % Choose default command line output for FaceRecognition
 handles.output = hObject;
-
+handles.flag = 0;
 % Update handles structure
 cla(handles.axes2);
+set(handles.TrainDatabase,'BackgroundColor',[1 0 0]);
 guidata(hObject, handles);
 
 % UIWAIT makes FaceRecognition wait for user response (see UIRESUME)
@@ -168,7 +169,9 @@ function checkiftrained(handles)
 try
     if(handles.flag==1)
         set(handles.text7,'String','Trained');
+        set(handles.TrainDatabase,'BackgroundColor',[0 1 0]);
     else
+        set(handles.TrainDatabase,'BackgroundColor',[1 0 0]);
         set(handles.text7,'String','Not Trained');
     end
 catch ME
