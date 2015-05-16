@@ -21,16 +21,12 @@ end
 % --- Executes just before FaceRecognition is made visible.
 function FaceRecognition_OpeningFcn(hObject, eventdata, handles, varargin)
 % Choose default command line output for FaceRecognition
-ah = axes('unit','normalized','position',[0 0 1 1]);
-bg = imread('example1.jpg');
-imagesc(bg);
-set(ah,'handlevisibility','off','visible','off');
-uistack(ah, 'bottom');
 handles.output = hObject;
-handles.flag = 0;
+
 % Update handles structure
 cla(handles.axes2);
 set(handles.TrainDatabase,'BackgroundColor',[1 0 0]);
+handles.flag=0;
 guidata(hObject, handles);
 
 % UIWAIT makes FaceRecognition wait for user response (see UIRESUME)
@@ -63,19 +59,24 @@ function b_CreateFcn(hObject, eventdata, handles)
 
 % --- Executes on button press in TrainDatabase.
 function TrainDatabase_Callback(hObject, eventdata, handles)
-% hObject    handle to TrainDatabase (see GCBO)
+% hObject    handle to TrainDatabase (see 
 % eventdata  reserved - to be defined in a future version of MATLAB
-% handles    structure with handles and user data (see GUIDATA)
-TrainDataBase(hObject,handles);
-checkiftrained(guidata(hObject));
+% handles    structure with handles and userGCBO) data (see GUIDATA)
 
+    TrainDataBase(hObject,handles);
+    checkiftrained(guidata(hObject));
+
+    if(handles.flag==0)
+         set(handles.TrainDatabase,'BackgroundColor',[1  0  0]);
+         set(handles.text7,'String','Not Trained');
+    end
+end
 
 % --- Executes on button press in LoadImage.
 function LoadImage_Callback(hObject, eventdata, handles)
 % hObject    handle to LoadImage (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA) 
-clear_Callback(hObject, eventdata, handles);
 [InputImage , fileCanceled]= imgetfile;
     if fileCanceled 
         disp('No file selected');
@@ -171,16 +172,17 @@ cla(handles.axes2);
 
 
 function checkiftrained(handles)
-try
-    if(handles.flag==1)
-        %%set(handles.text7,'String','Trained');
-        set(handles.TrainDatabase,'BackgroundColor',[0 1 0]);
-    else
-        set(handles.TrainDatabase,'BackgroundColor',[1 0 0]);
-        %%set(handles.text7,'String','Not Trained');
-    end
-catch ME
-    disp(getReport(ME));
-end
+
+if(handles.flag==1)
+    set(handles.text7,'String','Trained');
+    set(handles.TrainDatabase,'BackgroundColor',[0 1 0]);
     
-        
+    %=[255 204 0];
+end
+
+ 
+
+
+
+
+

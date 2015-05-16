@@ -1,0 +1,54 @@
+﻿diff --git a/FaceRecognition.fig b/FaceRecognition.fig
+index a8ff569..f736980 100644
+Binary files a/FaceRecognition.fig and b/FaceRecognition.fig differ
+diff --git a/FaceRecognition.m b/FaceRecognition.m
+index 27a0b82..68fdf31 100644
+--- a/FaceRecognition.m
++++ b/FaceRecognition.m
+@@ -17,14 +17,19 @@ else
+ end
+ % End initialization code - DO NOT EDIT
+ 
+ 
+ % --- Executes just before FaceRecognition is made visible.
+ function FaceRecognition_OpeningFcn(hObject, eventdata, handles, varargin)
+ % Choose default command line output for FaceRecognition
++ah = axes('unit','normalized','position',[0 0 1 1]);
++bg = imread('example1.jpg');
++imagesc(bg);
++set(ah,'handlevisibility','off','visible','off');
++uistack(ah, 'bottom');
+ handles.output = hObject;
+ handles.flag = 0;
+ % Update handles structure
+ cla(handles.axes2);
+ set(handles.TrainDatabase,'BackgroundColor',[1 0 0]);
+ guidata(hObject, handles);
+ 
+@@ -164,18 +169,18 @@ cla(handles.axes9);
+ cla(handles.axes1);
+ cla(handles.axes2);
+ 
+ 
+ function checkiftrained(handles)
+ try
+     if(handles.flag==1)
+-        set(handles.text7,'String','Trained');
++        %%set(handles.text7,'String','Trained');
+         set(handles.TrainDatabase,'BackgroundColor',[0 1 0]);
+     else
+         set(handles.TrainDatabase,'BackgroundColor',[1 0 0]);
+-        set(handles.text7,'String','Not Trained');
++        %%set(handles.text7,'String','Not Trained');
+     end
+ catch ME
+     disp(getReport(ME));
+ end
+     
+-        
+\ No newline at end of file
++        
+diff --git a/prsn.mat b/prsn.mat
+index b863482..bf4ce4b 100644
+Binary files a/prsn.mat and b/prsn.mat differ
+
