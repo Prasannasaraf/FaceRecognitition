@@ -1,4 +1,4 @@
-function example(handles)
+function Recognize(handles)
 % load train database
 try
     load('prsn.mat','T','TrainDatabasePath');
