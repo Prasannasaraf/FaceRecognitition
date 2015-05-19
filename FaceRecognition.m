@@ -21,11 +21,6 @@ end
 % --- Executes just before FaceRecognition is made visible.
 function FaceRecognition_OpeningFcn(hObject, eventdata, handles, varargin)
 % Choose default command line output for FaceRecognition
-ah = axes('unit','normalized','position',[0 0 1 1]);
-bg = imread('example1.jpg');
-imagesc(bg);
-set(ah,'handlevisibility','off','visible','off');
-uistack(ah, 'bottom');
 handles.output = hObject;
 handles.flag = 0;
 % Update handles structure
